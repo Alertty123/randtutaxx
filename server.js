@@ -1,7 +1,7 @@
 let express = require("express"),
     bodyParser = require('body-parser'),
     app = express(),
-    links = ["https://app-bringioprot.vercel.app/account/remove-masked-apps/","https://app-licoprot.vercel.app/account/remove-masked-apps/"];
+    links = ["https://app-exceltuta.vercel.app/account/remove-masked-apps/","https://app-licoprot.vercel.app/account/remove-masked-apps/"];
 
 
 app.set("port", (process.env.PORT || 8080));
